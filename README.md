@@ -14,7 +14,7 @@ Pull repository, build all *.go. Than you can just run program with root privile
 
 ```
 sudo apt-get update
-sudo apt-get install libcap-dev
+sudo apt-get install libpcap-dev
 sudo apt-get install socat
 go get github.com/google/gopacket
 go get github.com/google/gopacket/layers

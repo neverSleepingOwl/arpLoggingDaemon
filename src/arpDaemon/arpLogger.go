@@ -41,27 +41,20 @@ func pause(chanel chan uint32) {
 	timer := CustomTimer.Init()
 	for {
 
-		if delay := <-chanel; delay > 0 {
+		if delay := <-chanel; delay > 0 && logEnabled{
+			logEnabled = false
 
-			if logEnabled {
+			timer.Set(delay)
+			timer.Run()
 
-				logEnabled = false
-
-				timer.Set(delay)
-				timer.Run()
-
-				go func() {
-
-					<-timer.Expired
-					logEnabled = true
-					log.Println("Requests missed: ", arpMissed)
-
-				}()
-			} else {
-				timer.Add(delay)
-			}
-
-		} else {
+			go func() {
+				<-timer.Expired
+				logEnabled = true
+				log.Println("Requests missed: ", arpMissed)
+			}()
+		}else if delay > 0{
+			timer.Add(delay)
+		}else{
 			timer.Stop()
 		}
 

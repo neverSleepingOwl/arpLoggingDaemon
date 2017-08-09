@@ -44,5 +44,3 @@ No tests added yet, it was my first learning program in golang.
 ## Built With
 go build *.go should work just fine, also you print all filenames manually or write your own build script.
 
-
-## License

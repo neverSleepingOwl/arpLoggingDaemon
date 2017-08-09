@@ -9,7 +9,8 @@ It's important, that daemon must be run with root privileges, or you should run 
 Pull repository, build all *.go. Than you can just run program with root privilege. Integrating daemon with systemd is described in install section.
 
 ### Prerequisites
- Required libcap-dev library. All go packets can be received using "go get" command.
+ Required libcap-dev library. All go packets can be received using "go get" command.Required golang ver. 1.6.2 or higher
+ (doesn't compile under go 1.3.3 and go 1.4)
  Also it's usefull to use socat utility. Example for Debian/Ubuntu:
 
 ```
@@ -29,7 +30,7 @@ sudo socat - UNIX-CONNECT:/tmp/foo   // use this then daemon is already working 
 Pull repository, build all *.go files using go build and install in /usr/bin/arpLoggingDaemon or wherever you want,
 if you change ExecStart value in ArpLogginDaemon.service.
 You should also locate ArpLogginDaemon.service in /etc/systemd/system/ or write your own systemd script.
-After that execute the following commands:
+After that execute the following commands (my unit here is name of *.service script (without .service)):
 
 ```
 systemctl status myunit

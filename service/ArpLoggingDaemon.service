@@ -1,0 +1,14 @@
+[Unit]
+Description=arp logging daemon
+
+[Service]
+Type=notify
+PIDFile=/home/test.pid
+User=root
+Group=root
+ExecStart=/usr/bin/arpLoggingDaemon
+WatchdogSec=30s
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
